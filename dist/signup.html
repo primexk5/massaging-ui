@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/dist/styles.css">
+</head>
+<body>
+    <div class="bg-slate-200 flex items-center gap-7 flex-col justify-center min-h-screen">
+
+        <h2>
+            Welcome to <span class="text-slate-800 font-extrabold text-2xl"><i>one</i>chat</span>, the best chat app in the world.
+        </h2>
+        
+        <div class="p-8 bg-gray-800 border flex flex-col items-center justify-center rounded-lg shadow-lg">
+            <!-- signup -->
+             <h1 class="text-2xl text-white font-bold">
+                REGISTER
+             </h1>
+            <form class="flex flex-col mt-5 items-center justify-center gap-4">
+                <input class="w-60 rounded-lg bg-slate-700 text-white hover:bg-slate-600 p-4" type="text" name="first_name" id="first_name" placeholder="first name">
+                <input class="w-60 rounded-lg bg-slate-700 text-white hover:bg-slate-600 p-4" type="text" name="last_name" id="last_name" placeholder="last name">
+                <input class="w-60 rounded-lg bg-slate-700 text-white hover:bg-slate-600 p-4" type="text" name="email" id="email" placeholder="email">
+                <input class="w-60 rounded-lg bg-slate-700 text-white hover:bg-slate-600 p-4" type="password" name="password" id="password" placeholder="password">
+                <button class="w-full bg-yellow-600 text-white font-semibold rounded-lg p-2 hover:bg-yellow-500" id="signup-btn">Sign Up</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        var firstNameInput = document.getElementById('first_name');
+        var lastNameInput = document.getElementById('last_name');
+        var emailInput = document.getElementById('email');
+        var passwordInput = document.getElementById('password');
+        var signupBtn = document.getElementById('signup-btn');
+
+        signupBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const firstName = firstNameInput.value;
+            const lastName = lastNameInput.value;
+            const email = emailInput.value;
+            const password = passwordInput.value;
+
+            // const user = [{
+            //     firstName: firstNameInput.value,
+            //     lastName: lastNameInput.value,
+            //     email: emailInput.value,
+            //     password: passwordInput.value
+            // }]
+
+         
+
+            if (!firstName || !lastName || !email || !password) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+       
+            // localStorage.setItem('firstName', firstName);
+            // localStorage.setItem('lastName', lastName);
+            // localStorage.setItem('email', email);
+            // localStorage.setItem('password', password);
+
+            let user = {
+                firstName,
+                lastName,
+                email,
+                password}
+
+                localStorage.setItem('user', JSON.stringify(user));
+                localStorage.setItem('isLoggedIn', true);
+
+
+            alert('You have successfully signed up');
+            window.location.href = '/dist/login.html'; 
+        });
+    </script>
+</body>
+</html>

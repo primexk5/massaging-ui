@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <style>
+            .hide {
+                display: none;
+            }
+
+            .show {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content">
+            <div id="welcome">
+                <button type="button" id="logout">Logout</button>
+                <div id="welcomeMsg"></div>
+            </div>
+            <form>
+                <div>
+                    <label>Username</label>
+                    <input type="text" id="username">
+                </div>
+                <div>
+                    <label>Password</label>
+                    <input type="password" id="password">
+                </div>
+                <div>
+                    <button type="button" id="login">Login</button>
+                </div>
+            </form>
+        </div>
+        <script>
+            // let users = [
+            //     {username: "KC", level: 50},
+            //     {username: "King", level: 40},
+            // ]
+
+            let users = {name: "KC", level: 50}
+
+            localStorage.setItem('usersL', users)
+            var us = localStorage.getItem('usersL')
+            console.log(users["name"])
+            var isLoggedIn = localStorage.getItem("isLoggedIn")
+
+            if(isLoggedIn == "true") {
+                document.querySelector("#welcomeMsg").innerHTML = `<h1>Hello, ${localStorage.getItem("username")}</h1>`
+                document.querySelector('form').classList.add('hide');
+
+                var logout = document.getElementById('logout')
+                logout.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    localStorage.removeItem('isLoggedIn')
+                    // window.location.reload();
+                    window.location.href = "index.html"
+                })
+            }else{
+                document.querySelector('#welcome').classList.add('hide');
+                var loginBtn = document.getElementById('login')
+
+                var validUser = "kingkc"
+                var validPass = "123456"
+
+                loginBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    let username = document.getElementById('username').value
+                    let password = document.getElementById('password').value
+
+                    if(username == validUser && password == validPass) {
+                        localStorage.setItem("username", username);
+                        localStorage.setItem("isLoggedIn", true)
+
+                        document.querySelector("#welcomeMsg").innerHTML = `<h1>Welcome, ${localStorage.getItem("username")}`
+                        document.querySelector('form').classList.add('hide');
+                        document.querySelector('#welcome').classList.add('show');
+                    }else{
+                        document.querySelector('form').insertAdjacentHTML('afterBegin', `Wrong login info`)
+                    }
+                })
+            }
+        </script>
+    </body>
+</html>
