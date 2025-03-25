@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/dist/styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Messaging UI</title>
+</head>
+<body>
+  <div class="flex items-center justify-center bg-gray-200 rounded-lg min-h-screen">
+    <div class="flex flex-col h-[800px] md:flex-row w-full md:w-[80%]  rounded-3xl shadow-lg">
+      <!-- Left Sidebar -->
+      <div class="w-full md:w-1/4 bg-slate-800 p-4">
+        <h2 class="text-orange-400 font-bold">Chats</h2>
+
+        <hr>
+
+        <div class="flex items-center justify-between mt-4">
+          <input type="text" id="searchInput" placeholder="Search" class="w-full p-2 mt-4 rounded-lg">
+        </div>
+  
+        <!-- Messages List -->
+        <div id="chatsList" class="flex flex-col gap-5 mt-4">
+          <!-- Chat items will be dynamically inserted here -->
+        </div>
+      </div>
+  
+      <!-- Right Content Area -->
+      <div class="w-full md:w-3/4 bg-gradient-to-r bg-white p-4 flex flex-col">
+        <h2 class="text-orange-400 font-bold">Messages</h2>
+
+        <hr>
+       
+        <!-- Messages Area -->
+        <div id="messagesArea" class="flex-1">
+          <!-- Messages will be dynamically inserted here -->
+        </div>
+
+        <hr>
+
+        <!-- Message Input and Send Button -->
+        <div class="flex items-center justify-between mt-4">
+          <input type="text" id="messageInput" placeholder="Type a message" class="w-full p-2 rounded-lg">
+          <button id="sendButton" class="ml-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Send
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="/dist/chats.js"></script>
+</body>
+</html>
